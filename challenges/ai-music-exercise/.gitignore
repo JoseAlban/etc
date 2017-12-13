@@ -1,0 +1,14 @@
+### Gradle template
+.gradle
+/build/
+
+# IDEA IntelliJ
+*.ipr
+*.iws
+*.iml
+.idea
+.idea_modules
+out
+/out/
+atlassian-ide-plugin.xml
+/grade.properties
