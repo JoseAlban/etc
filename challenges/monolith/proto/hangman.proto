@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package monolith;
+
+option optimize_for = SPEED;
+
+service Hello {
+    rpc Say (Hi1) returns (Hi1);
+}
+
+message Hi1 {
+    string name = 1;
+}
+
