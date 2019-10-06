@@ -13,6 +13,7 @@ import (
 )
 
 var games = map[uint64]*domain.Hangman{}
+var subscriptions = make(map[chan string][]pb.Hangman_SubscribeToGameServer)
 
 type server struct {
 	pb.UnimplementedHangmanServer
@@ -52,20 +53,8 @@ func (s *server) SubscribeToGame(in *pb.GameId, stream pb.Hangman_SubscribeToGam
 		return status.Errorf(codes.NotFound, "Game not found: %v", in.GameId)
 	}
 
-	go func() {
-		for {
-			select {
-			case notif, ok := <-game.Notifications:
-				if !ok {
-					break
-				}
-				if err := stream.Send(&pb.Notification{Msg: notif}); err != nil {
-					log.Printf("Error while streaming back to client: %v", err)
-					break
-				}
-			}
-		}
-	}()
+	// TODO then would like to have a goroutine under main that loops forever on all channels in map and sends notif to streams attached if stream still open
+	subscriptions[game.Notifications] = append(subscriptions[game.Notifications], stream)
 	return nil
 }
 

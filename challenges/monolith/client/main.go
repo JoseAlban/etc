@@ -65,21 +65,60 @@ func listGames(c pb.HangmanClient, ctx context.Context) {
 	}
 }
 
-func resumeGame(c pb.HangmanClient, ctx context.Context) {
-	game, err := c.ResumeGame(ctx, &pb.GameId{GameId: *resumeId})
-	if err != nil {
-		log.Fatalf("Failed to req: %v", err)
-	}
-	log.Printf("Game state: %v", game)
-	stdioGuesses(c, game.GameId)
-}
-
 func playGame(c pb.HangmanClient, ctx context.Context) {
 	game, err := c.StartGame(ctx, &pb.StartGameParams{})
 	if err != nil {
 		log.Fatalf("Failed to req: %v", err)
 	}
 	log.Printf("Game state: %v", game)
+
+	go func() {
+		// TODO broken :/ getting EOF straight away - needed to read more on how to get long lived grpc server streams working
+		stream, err := c.SubscribeToGame(context.Background(), &pb.GameId{GameId: game.GameId})
+		if err != nil {
+			log.Fatalf("Failed to req: %v", err)
+		}
+		for {
+			notif, err := stream.Recv()
+			if err == io.EOF {
+				log.Print("eof received")
+				break
+			}
+			if err != nil {
+				log.Fatal(err)
+			}
+			if notif != nil {
+				log.Printf("Notification received: %v", notif)
+			}
+		}
+	}()
+	stdioGuesses(c, game.GameId)
+}
+
+func resumeGame(c pb.HangmanClient, ctx context.Context) {
+	game, err := c.ResumeGame(ctx, &pb.GameId{GameId: *resumeId})
+	if err != nil {
+		log.Fatalf("Failed to req: %v", err)
+	}
+	log.Printf("Game state: %v", game)
+
+	//stream, err := c.SubscribeToGame(ctx, &pb.GameId{GameId: *resumeId})
+	//if err != nil {
+	//	log.Fatalf("Failed to req: %v", err)
+	//}
+	//go func() {
+	//	for {
+	//		notif, err := stream.Recv()
+	//		if err == io.EOF {
+	//			break
+	//		}
+	//		if err != nil {
+	//			log.Fatal(err)
+	//		}
+	//		log.Printf("Notification received: %v", notif)
+	//	}
+	//}()
+
 	stdioGuesses(c, game.GameId)
 }
 
