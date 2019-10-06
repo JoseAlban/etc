@@ -5,17 +5,22 @@ package monolith;
 option optimize_for = SPEED;
 
 service Hangman {
-    rpc StartGame (StartGameParams) returns (stream Game); // requirement #1 and #3
-    rpc ListGames (ListGamesParams) returns (stream Game); // requirement #5
-    rpc ResumeGame (GameToResume) returns (stream Game); // requirement #4 and #3
+    rpc StartGame (StartGameParams) returns (Game); // requirement #1
     rpc GuessChar (Guess) returns (Game); // requirement #2
+    rpc SubscribeToGame (GameId) returns (stream Notification); // requirement #3
+    rpc ResumeGame (GameId) returns (Game); // requirement #4
+    rpc ListGames (ListGamesParams) returns (stream Game); // requirement #5
 }
 
 message StartGameParams {} // placeholder for future changes without breaking compatibility
 message ListGamesParams {} // placeholder for future changes without breaking compatibility
 
-message GameToResume {
+message GameId {
     uint64 game_id = 1;
+}
+
+message Notification {
+    string msg = 1;
 }
 
 message Guess {

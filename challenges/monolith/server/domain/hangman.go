@@ -22,17 +22,20 @@ type Hangman struct {
 	attemptsInline []string // so that we can represent as a nice array to the client - alternative would be to flat map keys into array on each representation
 	mutex sync.Mutex // protect against multiple clients mutating state of a game
 	gameOver bool
+	Notifications chan string
 }
 
 func NewGame() *Hangman {
 	atomic.AddUint64(&idGen, 1)
+	var randomIndex = rand.Int() % len(possibleStrings)
 
 	h := &Hangman{
 		Id: idGen,
-		word: possibleStrings[rand.Int() % len(possibleStrings)],
+		word: possibleStrings[randomIndex],
 		attempts: make(map[string]interface{}, 0),
 		attemptsInline: make([]string, 0),
 		gameOver: false,
+		Notifications: make(chan string, 1),
 	}
 	return h
 }
@@ -59,6 +62,15 @@ func (h *Hangman) ToClientResponse() *pb.Game {
 
 	var won = !strings.ContainsAny(word, "_")
 	var gameOver = won || remainingGuesses == 0
+	if gameOver && !h.gameOver { // game over transition notification
+		var msg string
+		if won {
+			msg = fmt.Sprintf("You WON! Game is over, game status: %v", h)
+		} else {
+			msg = fmt.Sprintf("You LOST! Game is over, game status: %v", h)
+		}
+		h.Notifications <- msg
+	}
 	h.gameOver = gameOver
 
 	return &pb.Game{

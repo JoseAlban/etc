@@ -66,67 +66,21 @@ func listGames(c pb.HangmanClient, ctx context.Context) {
 }
 
 func resumeGame(c pb.HangmanClient, ctx context.Context) {
-	stream, err := c.ResumeGame(ctx, &pb.GameToResume{GameId: *resumeId})
+	game, err := c.ResumeGame(ctx, &pb.GameId{GameId: *resumeId})
 	if err != nil {
 		log.Fatalf("Failed to req: %v", err)
 	}
-
-	game, err := stream.Recv()
-	if err == io.EOF {
-		log.Fatal("Could not get created game: premature server exit")
-	}
-	if err != nil {
-		log.Fatalf("Error while recv from server: %v", err)
-	}
 	log.Printf("Game state: %v", game)
-
-	go recvServerStreamResume(stream)
 	stdioGuesses(c, game.GameId)
 }
 
 func playGame(c pb.HangmanClient, ctx context.Context) {
-	stream, err := c.StartGame(ctx, &pb.StartGameParams{})
+	game, err := c.StartGame(ctx, &pb.StartGameParams{})
 	if err != nil {
 		log.Fatalf("Failed to req: %v", err)
 	}
-
-	game, err := stream.Recv()
-	if err == io.EOF {
-		log.Fatal("Could not get created game: premature server exit")
-	}
-	if err != nil {
-		log.Fatalf("Error while recv from server: %v", err)
-	}
 	log.Printf("Game state: %v", game)
-
-	go recvServerStreamNew(stream)
 	stdioGuesses(c, game.GameId)
-}
-
-func recvServerStreamNew(stream pb.Hangman_StartGameClient) {
-	for {
-		game, err := stream.Recv()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Fatalf("Error while recv from server: %v", err)
-		}
-		log.Printf("Game state: %v", game)
-	}
-}
-
-func recvServerStreamResume(stream pb.Hangman_ResumeGameClient) {
-	for {
-		game, err := stream.Recv()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Fatalf("Error while recv from server: %v", err)
-		}
-		log.Printf("Game state: %v", game)
-	}
 }
 
 func stdioGuesses(c pb.HangmanClient, gameId uint64) {
