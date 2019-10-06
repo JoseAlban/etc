@@ -7,6 +7,9 @@ build: generate
 	go build -o bin/client ./client
 	go build -o bin/server ./server
 
+test: generate
+	go test ./...
+
 serve:
 	./bin/server
 

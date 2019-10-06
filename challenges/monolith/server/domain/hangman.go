@@ -35,7 +35,7 @@ func NewGame() *Hangman {
 		attempts: make(map[string]interface{}, 0),
 		attemptsInline: make([]string, 0),
 		gameOver: false,
-		Notifications: make(chan string, 1),
+		Notifications: make(chan string, 1), // so far only 1 notif might happen so buffer of 1 allows non-blocking
 	}
 	return h
 }
