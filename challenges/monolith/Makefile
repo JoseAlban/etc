@@ -6,3 +6,9 @@ generate:
 build: generate
 	go build -o bin/client ./client
 	go build -o bin/server ./server
+
+serve:
+	./bin/server
+
+newgame:
+	./bin/client new

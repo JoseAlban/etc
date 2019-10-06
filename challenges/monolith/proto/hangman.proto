@@ -26,5 +26,8 @@ message Guess {
 message Game {
     uint64 game_id = 1;
     uint64 remaining_guesses = 2; // if 0 remaining and not won yet, then you lost
-    bool won = 3;
+    repeated string guesses = 3;
+    string word = 4;
+    bool won = 5;
+    bool game_over = 6;
 }

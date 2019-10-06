@@ -18,7 +18,9 @@ type Hangman struct {
 	Id uint64
 	word string
 	attempts map[string]interface{} // so that we can search O(1)
+	attemptsInline []string // so that we can represent as a nice array to the client - alternative would be to flat map keys into array on each representation
 	mutex sync.Mutex // protect against multiple clients mutating state of a game
+	gameOver bool
 }
 
 func NewGame() *Hangman {
@@ -28,34 +30,57 @@ func NewGame() *Hangman {
 		Id: idGen,
 		word: possibleStrings[rand.Int() % len(possibleStrings)],
 		attempts: make(map[string]interface{}, 0),
+		attemptsInline: make([]string, 0),
+		gameOver: false,
 	}
 	return h
 }
 
 func (h *Hangman) ToClientResponse() *pb.Game {
-	var remainingGuesses uint64
+	var wrongGuesses = len(h.attempts)
+	var word string
+	for _, char := range h.word {
+		if _, found := h.attempts[string(char)]; found {
+			wrongGuesses -= 1 // TODO err.. it's being nice and allowing extra guesses if you got dupe chars right :) // bug
+			word += fmt.Sprintf("%c ", char)
+		} else {
+			word += "_ "
+		}
+	}
+
 	// to prevent overflow exception,
-	if len(h.attempts) >= maxGuesses {
+	var remainingGuesses uint64
+	if wrongGuesses >= maxGuesses {
 		remainingGuesses = 0
 	} else {
-		remainingGuesses = uint64(maxGuesses - len(h.attempts))
+		remainingGuesses = uint64(maxGuesses - wrongGuesses)
 	}
+
+	var won = !strings.ContainsAny(word, "_")
+	var gameOver = won || remainingGuesses == 0
+	h.gameOver = gameOver
 
 	return &pb.Game{
 		GameId: h.Id,
 		RemainingGuesses: remainingGuesses,
-		//Won: h.word == h.attempts, TODO
-		Won: false,
+		Guesses: h.attemptsInline,
+		Word: word,
+		Won: won,
+		GameOver: gameOver,
 	}
 }
 
 func (h *Hangman) Guess(char string) error {
+	if h.gameOver {
+		return errors.New("game is over")
+	}
+
 	if len(char) != 1 {
 		return errors.New(fmt.Sprintf("`%v` not a single char", char))
 	}
 
 	char = strings.ToLower(char)
-	if _, found := h.attempts[char]; !found {
+	if _, found := h.attempts[char]; found {
 		return errors.New(fmt.Sprintf("`%v` already attempted", char))
 	}
 
@@ -63,5 +88,6 @@ func (h *Hangman) Guess(char string) error {
 	h.mutex.Lock()
 	defer h.mutex.Unlock()
 	h.attempts[char] = true
+	h.attemptsInline = append(h.attemptsInline, char)
 	return nil
 }

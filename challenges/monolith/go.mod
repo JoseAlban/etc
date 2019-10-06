@@ -16,4 +16,5 @@ require (
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/genproto v0.0.0-20191002211648-c459b9ce5143 // indirect
 	google.golang.org/grpc v1.24.0
+	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )

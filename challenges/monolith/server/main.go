@@ -19,6 +19,7 @@ type server struct {
 }
 
 func (s *server) StartGame(in *pb.StartGameParams, stream pb.Hangman_StartGameServer) error {
+	log.Print("Creating new game")
 	game := domain.NewGame()
 	games[game.Id] = game
 	if err := stream.Send(game.ToClientResponse()); err != nil {
@@ -29,6 +30,7 @@ func (s *server) StartGame(in *pb.StartGameParams, stream pb.Hangman_StartGameSe
 }
 
 func (s *server) ListGames(in *pb.ListGamesParams, stream pb.Hangman_ListGamesServer) error {
+	log.Print("Listing games")
 	for _, game := range games {
 		if err := stream.Send(game.ToClientResponse()); err != nil {
 			log.Printf("Error while streaming back to client: %v", err)
@@ -39,6 +41,7 @@ func (s *server) ListGames(in *pb.ListGamesParams, stream pb.Hangman_ListGamesSe
 }
 
 func (s *server) ResumeGame(in *pb.GameToResume, stream pb.Hangman_ResumeGameServer) error {
+	log.Printf("Resuming game %v", in.GameId)
 	game, found := games[in.GameId]
 	if !found {
 		// TODO use grpc status
@@ -53,6 +56,7 @@ func (s *server) ResumeGame(in *pb.GameToResume, stream pb.Hangman_ResumeGameSer
 }
 
 func (s *server) GuessChar(ctx context.Context, in *pb.Guess) (*pb.Game, error) {
+	log.Print("Received a new guess")
 	game, found := games[in.GameId]
 	if !found {
 		// TODO use grpc status
@@ -72,9 +76,9 @@ func main() {
 	}
 	g := grpc.NewServer()
 	pb.RegisterHangmanServer(g, &server{})
-	log.Print("test server")
 
 	if err = g.Serve(l); err != nil {
 		log.Fatalf("failed when serving: %v", err)
 	}
+	log.Print("server up")
 }
