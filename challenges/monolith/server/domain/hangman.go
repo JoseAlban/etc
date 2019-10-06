@@ -1,8 +1,9 @@
 package domain
 
 import (
-	"errors"
 	"fmt"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"math/rand"
 	pb "monolith/proto"
 	"strings"
@@ -72,16 +73,17 @@ func (h *Hangman) ToClientResponse() *pb.Game {
 
 func (h *Hangman) Guess(char string) error {
 	if h.gameOver {
-		return errors.New("game is over")
+		return status.Error(codes.Aborted, "game is over")
 	}
 
 	if len(char) != 1 {
-		return errors.New(fmt.Sprintf("`%v` not a single char", char))
+		return status.Errorf(codes.InvalidArgument, "`%v` not a single char", char)
 	}
 
 	char = strings.ToLower(char)
 	if _, found := h.attempts[char]; found {
-		return errors.New(fmt.Sprintf("`%v` already attempted", char))
+
+		return status.Errorf(codes.InvalidArgument, "`%v` already attempted", char)
 	}
 
 	// serialise changes to state

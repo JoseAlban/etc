@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"errors"
-	"fmt"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"log"
 	"monolith/server/domain"
 	"net"
@@ -44,8 +44,7 @@ func (s *server) ResumeGame(in *pb.GameToResume, stream pb.Hangman_ResumeGameSer
 	log.Printf("Resuming game %v", in.GameId)
 	game, found := games[in.GameId]
 	if !found {
-		// TODO use grpc status
-		return errors.New(fmt.Sprintf("Game not found: %v", in.GameId))
+		return status.Errorf(codes.NotFound, "Game not found: %v", in.GameId)
 	}
 
 	if err := stream.Send(game.ToClientResponse()); err != nil {
@@ -59,8 +58,7 @@ func (s *server) GuessChar(ctx context.Context, in *pb.Guess) (*pb.Game, error) 
 	log.Print("Received a new guess")
 	game, found := games[in.GameId]
 	if !found {
-		// TODO use grpc status
-		return nil, errors.New(fmt.Sprintf("Game not found: %v", in.GameId))
+		return nil, status.Errorf(codes.NotFound, "Game not found: %v", in.GameId)
 	}
 
 	if err := game.Guess(in.Char); err != nil {
