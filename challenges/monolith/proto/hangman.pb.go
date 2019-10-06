@@ -24,60 +24,239 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Hi1 struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+type StartGameParams struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Hi1) Reset()         { *m = Hi1{} }
-func (m *Hi1) String() string { return proto.CompactTextString(m) }
-func (*Hi1) ProtoMessage()    {}
-func (*Hi1) Descriptor() ([]byte, []int) {
+func (m *StartGameParams) Reset()         { *m = StartGameParams{} }
+func (m *StartGameParams) String() string { return proto.CompactTextString(m) }
+func (*StartGameParams) ProtoMessage()    {}
+func (*StartGameParams) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbcef6f769ac2a46, []int{0}
 }
 
-func (m *Hi1) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Hi1.Unmarshal(m, b)
+func (m *StartGameParams) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StartGameParams.Unmarshal(m, b)
 }
-func (m *Hi1) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Hi1.Marshal(b, m, deterministic)
+func (m *StartGameParams) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StartGameParams.Marshal(b, m, deterministic)
 }
-func (m *Hi1) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Hi1.Merge(m, src)
+func (m *StartGameParams) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StartGameParams.Merge(m, src)
 }
-func (m *Hi1) XXX_Size() int {
-	return xxx_messageInfo_Hi1.Size(m)
+func (m *StartGameParams) XXX_Size() int {
+	return xxx_messageInfo_StartGameParams.Size(m)
 }
-func (m *Hi1) XXX_DiscardUnknown() {
-	xxx_messageInfo_Hi1.DiscardUnknown(m)
+func (m *StartGameParams) XXX_DiscardUnknown() {
+	xxx_messageInfo_StartGameParams.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Hi1 proto.InternalMessageInfo
+var xxx_messageInfo_StartGameParams proto.InternalMessageInfo
 
-func (m *Hi1) GetName() string {
+type ListGamesParams struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListGamesParams) Reset()         { *m = ListGamesParams{} }
+func (m *ListGamesParams) String() string { return proto.CompactTextString(m) }
+func (*ListGamesParams) ProtoMessage()    {}
+func (*ListGamesParams) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fbcef6f769ac2a46, []int{1}
+}
+
+func (m *ListGamesParams) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListGamesParams.Unmarshal(m, b)
+}
+func (m *ListGamesParams) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListGamesParams.Marshal(b, m, deterministic)
+}
+func (m *ListGamesParams) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListGamesParams.Merge(m, src)
+}
+func (m *ListGamesParams) XXX_Size() int {
+	return xxx_messageInfo_ListGamesParams.Size(m)
+}
+func (m *ListGamesParams) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListGamesParams.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListGamesParams proto.InternalMessageInfo
+
+type GameToResume struct {
+	GameId               uint64   `protobuf:"varint,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GameToResume) Reset()         { *m = GameToResume{} }
+func (m *GameToResume) String() string { return proto.CompactTextString(m) }
+func (*GameToResume) ProtoMessage()    {}
+func (*GameToResume) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fbcef6f769ac2a46, []int{2}
+}
+
+func (m *GameToResume) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GameToResume.Unmarshal(m, b)
+}
+func (m *GameToResume) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GameToResume.Marshal(b, m, deterministic)
+}
+func (m *GameToResume) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameToResume.Merge(m, src)
+}
+func (m *GameToResume) XXX_Size() int {
+	return xxx_messageInfo_GameToResume.Size(m)
+}
+func (m *GameToResume) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameToResume.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameToResume proto.InternalMessageInfo
+
+func (m *GameToResume) GetGameId() uint64 {
 	if m != nil {
-		return m.Name
+		return m.GameId
+	}
+	return 0
+}
+
+type Guess struct {
+	GameId               uint64   `protobuf:"varint,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	Char                 string   `protobuf:"bytes,2,opt,name=char,proto3" json:"char,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Guess) Reset()         { *m = Guess{} }
+func (m *Guess) String() string { return proto.CompactTextString(m) }
+func (*Guess) ProtoMessage()    {}
+func (*Guess) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fbcef6f769ac2a46, []int{3}
+}
+
+func (m *Guess) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Guess.Unmarshal(m, b)
+}
+func (m *Guess) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Guess.Marshal(b, m, deterministic)
+}
+func (m *Guess) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Guess.Merge(m, src)
+}
+func (m *Guess) XXX_Size() int {
+	return xxx_messageInfo_Guess.Size(m)
+}
+func (m *Guess) XXX_DiscardUnknown() {
+	xxx_messageInfo_Guess.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Guess proto.InternalMessageInfo
+
+func (m *Guess) GetGameId() uint64 {
+	if m != nil {
+		return m.GameId
+	}
+	return 0
+}
+
+func (m *Guess) GetChar() string {
+	if m != nil {
+		return m.Char
 	}
 	return ""
 }
 
+type Game struct {
+	GameId               uint64   `protobuf:"varint,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	RemainingGuesses     uint64   `protobuf:"varint,2,opt,name=remaining_guesses,json=remainingGuesses,proto3" json:"remaining_guesses,omitempty"`
+	Won                  bool     `protobuf:"varint,3,opt,name=won,proto3" json:"won,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Game) Reset()         { *m = Game{} }
+func (m *Game) String() string { return proto.CompactTextString(m) }
+func (*Game) ProtoMessage()    {}
+func (*Game) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fbcef6f769ac2a46, []int{4}
+}
+
+func (m *Game) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Game.Unmarshal(m, b)
+}
+func (m *Game) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Game.Marshal(b, m, deterministic)
+}
+func (m *Game) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Game.Merge(m, src)
+}
+func (m *Game) XXX_Size() int {
+	return xxx_messageInfo_Game.Size(m)
+}
+func (m *Game) XXX_DiscardUnknown() {
+	xxx_messageInfo_Game.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Game proto.InternalMessageInfo
+
+func (m *Game) GetGameId() uint64 {
+	if m != nil {
+		return m.GameId
+	}
+	return 0
+}
+
+func (m *Game) GetRemainingGuesses() uint64 {
+	if m != nil {
+		return m.RemainingGuesses
+	}
+	return 0
+}
+
+func (m *Game) GetWon() bool {
+	if m != nil {
+		return m.Won
+	}
+	return false
+}
+
 func init() {
-	proto.RegisterType((*Hi1)(nil), "monolith.Hi1")
+	proto.RegisterType((*StartGameParams)(nil), "monolith.StartGameParams")
+	proto.RegisterType((*ListGamesParams)(nil), "monolith.ListGamesParams")
+	proto.RegisterType((*GameToResume)(nil), "monolith.GameToResume")
+	proto.RegisterType((*Guess)(nil), "monolith.Guess")
+	proto.RegisterType((*Game)(nil), "monolith.Game")
 }
 
 func init() { proto.RegisterFile("hangman.proto", fileDescriptor_fbcef6f769ac2a46) }
 
 var fileDescriptor_fbcef6f769ac2a46 = []byte{
-	// 110 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xcd, 0x48, 0xcc, 0x4b,
-	0xcf, 0x4d, 0xcc, 0xd3, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0xc8, 0xcd, 0xcf, 0xcb, 0xcf,
-	0xc9, 0x2c, 0xc9, 0x50, 0x92, 0xe4, 0x62, 0xf6, 0xc8, 0x34, 0x14, 0x12, 0xe2, 0x62, 0xc9, 0x4b,
-	0xcc, 0x4d, 0x95, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x0c, 0x02, 0xb3, 0x8d, 0x74, 0xb8, 0x58, 0x3d,
-	0x52, 0x73, 0x72, 0xf2, 0x85, 0x94, 0xb9, 0x98, 0x83, 0x13, 0x2b, 0x85, 0x78, 0xf5, 0x60, 0xba,
-	0xf4, 0x3c, 0x32, 0x0d, 0xa5, 0x50, 0xb9, 0x4e, 0x4c, 0x1e, 0x8c, 0x49, 0x6c, 0x60, 0xd3, 0x8d,
-	0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0xb5, 0x45, 0xea, 0x66, 0x6e, 0x00, 0x00, 0x00,
+	// 273 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x91, 0x41, 0x4b, 0xc3, 0x40,
+	0x10, 0x85, 0xd9, 0x36, 0xb6, 0xcd, 0xa0, 0xb6, 0xdd, 0x83, 0x46, 0x4f, 0x21, 0x17, 0x03, 0x4a,
+	0x10, 0x15, 0xf1, 0xac, 0x87, 0x54, 0xf0, 0x20, 0xd1, 0xb3, 0x65, 0xb4, 0x4b, 0xb2, 0xe0, 0xee,
+	0xca, 0x6e, 0x8a, 0x3f, 0xd8, 0x3f, 0x22, 0xb3, 0xb1, 0xb1, 0x0d, 0xed, 0x6d, 0xe7, 0xbd, 0x79,
+	0x33, 0xcc, 0xb7, 0x70, 0x50, 0xa1, 0x2e, 0x15, 0xea, 0xec, 0xcb, 0x9a, 0xda, 0xf0, 0x91, 0x32,
+	0xda, 0x7c, 0xca, 0xba, 0x4a, 0xa6, 0x30, 0x7e, 0xa9, 0xd1, 0xd6, 0x39, 0x2a, 0xf1, 0x8c, 0x16,
+	0x95, 0x23, 0xe9, 0x49, 0x3a, 0xaf, 0xb8, 0x3f, 0xe9, 0x0c, 0xf6, 0xa9, 0x7c, 0x35, 0x85, 0x70,
+	0x4b, 0x25, 0xf8, 0x31, 0x0c, 0x4b, 0x54, 0x62, 0x2e, 0x17, 0x11, 0x8b, 0x59, 0x1a, 0x14, 0x03,
+	0x2a, 0x1f, 0x17, 0xc9, 0x0d, 0xec, 0xe5, 0x4b, 0xe1, 0xdc, 0xce, 0x0e, 0xce, 0x21, 0xf8, 0xa8,
+	0xd0, 0x46, 0xbd, 0x98, 0xa5, 0x61, 0xe1, 0xdf, 0xc9, 0x1b, 0x04, 0x34, 0x7e, 0x77, 0xe8, 0x1c,
+	0xa6, 0x56, 0x28, 0x94, 0x5a, 0xea, 0x72, 0x5e, 0xd2, 0x02, 0xe1, 0xfc, 0x84, 0xa0, 0x98, 0xb4,
+	0x46, 0xde, 0xe8, 0x7c, 0x02, 0xfd, 0x6f, 0xa3, 0xa3, 0x7e, 0xcc, 0xd2, 0x51, 0x41, 0xcf, 0xab,
+	0x1f, 0x06, 0xc3, 0x59, 0x03, 0x80, 0xdf, 0x41, 0xd8, 0x1e, 0xcc, 0x4f, 0xb2, 0x15, 0x88, 0xac,
+	0x43, 0xe1, 0xf4, 0xf0, 0xdf, 0x22, 0xf5, 0x92, 0x51, 0xb2, 0xe5, 0xb2, 0x9e, 0xec, 0xc0, 0xda,
+	0x92, 0xbc, 0x05, 0x68, 0xc0, 0xf9, 0xa5, 0x47, 0x9b, 0xfe, 0x0a, 0xea, 0x96, 0xdc, 0x05, 0x84,
+	0xfe, 0xa8, 0x87, 0x0a, 0x2d, 0x1f, 0xaf, 0xd9, 0x24, 0x76, 0xfb, 0xef, 0x7b, 0x33, 0xf6, 0x3e,
+	0xf0, 0xff, 0x7b, 0xfd, 0x1b, 0x00, 0x00, 0xff, 0xff, 0x01, 0x81, 0x6e, 0xd5, 0xf0, 0x01, 0x00,
+	0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -88,74 +267,264 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// HelloClient is the client API for Hello service.
+// HangmanClient is the client API for Hangman service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type HelloClient interface {
-	Say(ctx context.Context, in *Hi1, opts ...grpc.CallOption) (*Hi1, error)
+type HangmanClient interface {
+	StartGame(ctx context.Context, in *StartGameParams, opts ...grpc.CallOption) (Hangman_StartGameClient, error)
+	ListGames(ctx context.Context, in *ListGamesParams, opts ...grpc.CallOption) (Hangman_ListGamesClient, error)
+	ResumeGame(ctx context.Context, in *GameToResume, opts ...grpc.CallOption) (Hangman_ResumeGameClient, error)
+	GuessChar(ctx context.Context, in *Guess, opts ...grpc.CallOption) (*Game, error)
 }
 
-type helloClient struct {
+type hangmanClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewHelloClient(cc *grpc.ClientConn) HelloClient {
-	return &helloClient{cc}
+func NewHangmanClient(cc *grpc.ClientConn) HangmanClient {
+	return &hangmanClient{cc}
 }
 
-func (c *helloClient) Say(ctx context.Context, in *Hi1, opts ...grpc.CallOption) (*Hi1, error) {
-	out := new(Hi1)
-	err := c.cc.Invoke(ctx, "/monolith.Hello/Say", in, out, opts...)
+func (c *hangmanClient) StartGame(ctx context.Context, in *StartGameParams, opts ...grpc.CallOption) (Hangman_StartGameClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Hangman_serviceDesc.Streams[0], "/monolith.Hangman/StartGame", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &hangmanStartGameClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Hangman_StartGameClient interface {
+	Recv() (*Game, error)
+	grpc.ClientStream
+}
+
+type hangmanStartGameClient struct {
+	grpc.ClientStream
+}
+
+func (x *hangmanStartGameClient) Recv() (*Game, error) {
+	m := new(Game)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *hangmanClient) ListGames(ctx context.Context, in *ListGamesParams, opts ...grpc.CallOption) (Hangman_ListGamesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Hangman_serviceDesc.Streams[1], "/monolith.Hangman/ListGames", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &hangmanListGamesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Hangman_ListGamesClient interface {
+	Recv() (*Game, error)
+	grpc.ClientStream
+}
+
+type hangmanListGamesClient struct {
+	grpc.ClientStream
+}
+
+func (x *hangmanListGamesClient) Recv() (*Game, error) {
+	m := new(Game)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *hangmanClient) ResumeGame(ctx context.Context, in *GameToResume, opts ...grpc.CallOption) (Hangman_ResumeGameClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Hangman_serviceDesc.Streams[2], "/monolith.Hangman/ResumeGame", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &hangmanResumeGameClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Hangman_ResumeGameClient interface {
+	Recv() (*Game, error)
+	grpc.ClientStream
+}
+
+type hangmanResumeGameClient struct {
+	grpc.ClientStream
+}
+
+func (x *hangmanResumeGameClient) Recv() (*Game, error) {
+	m := new(Game)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *hangmanClient) GuessChar(ctx context.Context, in *Guess, opts ...grpc.CallOption) (*Game, error) {
+	out := new(Game)
+	err := c.cc.Invoke(ctx, "/monolith.Hangman/GuessChar", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// HelloServer is the server API for Hello service.
-type HelloServer interface {
-	Say(context.Context, *Hi1) (*Hi1, error)
+// HangmanServer is the server API for Hangman service.
+type HangmanServer interface {
+	StartGame(*StartGameParams, Hangman_StartGameServer) error
+	ListGames(*ListGamesParams, Hangman_ListGamesServer) error
+	ResumeGame(*GameToResume, Hangman_ResumeGameServer) error
+	GuessChar(context.Context, *Guess) (*Game, error)
 }
 
-// UnimplementedHelloServer can be embedded to have forward compatible implementations.
-type UnimplementedHelloServer struct {
+// UnimplementedHangmanServer can be embedded to have forward compatible implementations.
+type UnimplementedHangmanServer struct {
 }
 
-func (*UnimplementedHelloServer) Say(ctx context.Context, req *Hi1) (*Hi1, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Say not implemented")
+func (*UnimplementedHangmanServer) StartGame(req *StartGameParams, srv Hangman_StartGameServer) error {
+	return status.Errorf(codes.Unimplemented, "method StartGame not implemented")
+}
+func (*UnimplementedHangmanServer) ListGames(req *ListGamesParams, srv Hangman_ListGamesServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListGames not implemented")
+}
+func (*UnimplementedHangmanServer) ResumeGame(req *GameToResume, srv Hangman_ResumeGameServer) error {
+	return status.Errorf(codes.Unimplemented, "method ResumeGame not implemented")
+}
+func (*UnimplementedHangmanServer) GuessChar(ctx context.Context, req *Guess) (*Game, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GuessChar not implemented")
 }
 
-func RegisterHelloServer(s *grpc.Server, srv HelloServer) {
-	s.RegisterService(&_Hello_serviceDesc, srv)
+func RegisterHangmanServer(s *grpc.Server, srv HangmanServer) {
+	s.RegisterService(&_Hangman_serviceDesc, srv)
 }
 
-func _Hello_Say_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Hi1)
+func _Hangman_StartGame_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(StartGameParams)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(HangmanServer).StartGame(m, &hangmanStartGameServer{stream})
+}
+
+type Hangman_StartGameServer interface {
+	Send(*Game) error
+	grpc.ServerStream
+}
+
+type hangmanStartGameServer struct {
+	grpc.ServerStream
+}
+
+func (x *hangmanStartGameServer) Send(m *Game) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Hangman_ListGames_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListGamesParams)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(HangmanServer).ListGames(m, &hangmanListGamesServer{stream})
+}
+
+type Hangman_ListGamesServer interface {
+	Send(*Game) error
+	grpc.ServerStream
+}
+
+type hangmanListGamesServer struct {
+	grpc.ServerStream
+}
+
+func (x *hangmanListGamesServer) Send(m *Game) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Hangman_ResumeGame_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GameToResume)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(HangmanServer).ResumeGame(m, &hangmanResumeGameServer{stream})
+}
+
+type Hangman_ResumeGameServer interface {
+	Send(*Game) error
+	grpc.ServerStream
+}
+
+type hangmanResumeGameServer struct {
+	grpc.ServerStream
+}
+
+func (x *hangmanResumeGameServer) Send(m *Game) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Hangman_GuessChar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Guess)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HelloServer).Say(ctx, in)
+		return srv.(HangmanServer).GuessChar(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/monolith.Hello/Say",
+		FullMethod: "/monolith.Hangman/GuessChar",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HelloServer).Say(ctx, req.(*Hi1))
+		return srv.(HangmanServer).GuessChar(ctx, req.(*Guess))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Hello_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "monolith.Hello",
-	HandlerType: (*HelloServer)(nil),
+var _Hangman_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "monolith.Hangman",
+	HandlerType: (*HangmanServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Say",
-			Handler:    _Hello_Say_Handler,
+			MethodName: "GuessChar",
+			Handler:    _Hangman_GuessChar_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "StartGame",
+			Handler:       _Hangman_StartGame_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListGames",
+			Handler:       _Hangman_ListGames_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ResumeGame",
+			Handler:       _Hangman_ResumeGame_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "hangman.proto",
 }

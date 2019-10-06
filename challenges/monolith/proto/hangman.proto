@@ -4,11 +4,27 @@ package monolith;
 
 option optimize_for = SPEED;
 
-service Hello {
-    rpc Say (Hi1) returns (Hi1);
+service Hangman {
+    rpc StartGame (StartGameParams) returns (stream Game); // requirement #1 and #3
+    rpc ListGames (ListGamesParams) returns (stream Game); // requirement #5
+    rpc ResumeGame (GameToResume) returns (stream Game); // requirement #4 and #3
+    rpc GuessChar (Guess) returns (Game); // requirement #2
 }
 
-message Hi1 {
-    string name = 1;
+message StartGameParams {} // placeholder for future changes without breaking compatibility
+message ListGamesParams {} // placeholder for future changes without breaking compatibility
+
+message GameToResume {
+    uint64 game_id = 1;
 }
 
+message Guess {
+    uint64 game_id = 1;
+    string char = 2;
+}
+
+message Game {
+    uint64 game_id = 1;
+    uint64 remaining_guesses = 2; // if 0 remaining and not won yet, then you lost
+    bool won = 3;
+}
