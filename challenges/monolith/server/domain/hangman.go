@@ -2,27 +2,29 @@ package domain
 
 import (
 	"fmt"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"math/rand"
 	pb "monolith/proto"
 	"strings"
 	"sync"
 	"sync/atomic"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 var idGen uint64 = 0
 var possibleStrings = [...]string{"monolith", "ethereum", "blockchain", "btc"}
+
 const maxGuesses = 5
 
 type Hangman struct {
-	Id uint64
-	word string
-	attempts map[string]interface{} // so that we can search O(1)
-	attemptsInline []string // so that we can represent as a nice array to the client - alternative would be to flat map keys into array on each representation
-	mutex sync.Mutex // protect against multiple clients mutating state of a game
-	gameOver bool
-	Notifications chan string
+	Id             uint64
+	word           string
+	attempts       map[string]interface{} // so that we can search O(1)
+	attemptsInline []string               // so that we can represent as a nice array to the client - alternative would be to flat map keys into array on each representation
+	mutex          sync.Mutex             // protect against multiple clients mutating state of a game
+	gameOver       bool
+	Notifications  chan string
 }
 
 func NewGame() *Hangman {
@@ -30,12 +32,12 @@ func NewGame() *Hangman {
 	var randomIndex = rand.Int() % len(possibleStrings)
 
 	h := &Hangman{
-		Id: idGen,
-		word: possibleStrings[randomIndex],
-		attempts: make(map[string]interface{}, 0),
+		Id:             idGen,
+		word:           possibleStrings[randomIndex],
+		attempts:       make(map[string]interface{}, 0),
 		attemptsInline: make([]string, 0),
-		gameOver: false,
-		Notifications: make(chan string, 1), // so far only 1 notif might happen so buffer of 1 allows non-blocking
+		gameOver:       false,
+		Notifications:  make(chan string, 1), // so far only 1 notif might happen so buffer of 1 allows non-blocking
 	}
 	return h
 }
@@ -71,15 +73,16 @@ func (h *Hangman) ToClientResponse() *pb.Game {
 		}
 		h.Notifications <- msg
 	}
+	// TODO: not ideal, changing state while producing client representation - need to refactor the state calculation onto a different function and mutex it
 	h.gameOver = gameOver
 
 	return &pb.Game{
-		GameId: h.Id,
+		GameId:           h.Id,
 		RemainingGuesses: remainingGuesses,
-		Guesses: h.attemptsInline,
-		Word: word,
-		Won: won,
-		GameOver: gameOver,
+		Guesses:          h.attemptsInline,
+		Word:             word,
+		Won:              won,
+		GameOver:         gameOver,
 	}
 }
 
