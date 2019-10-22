@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 falcon = "*"
 pymysql = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
