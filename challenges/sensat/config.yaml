@@ -1,0 +1,6 @@
+db:
+  url: interviews.ctsaq8pbcych.eu-west-2.rds.amazonaws.com:3306
+  name: interviews
+  username: admin
+  password: REDACTED
+
