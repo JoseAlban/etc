@@ -9,6 +9,7 @@ verify_ssl = true
 falcon = "*"
 pymysql = "*"
 gunicorn = "*"
+pyyaml = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,4 +1,5 @@
 import falcon
+import yaml
 
 class QuoteResource:
 
@@ -12,8 +13,13 @@ class QuoteResource:
             'author': 'Grace Hopper'
         }
 
-        resp.media = quote
+        # resp.media = quote
+        resp.media = get_config()
 
+
+def get_config():
+    with open("config.yaml", 'r') as stream:
+        return yaml.safe_load(stream)
 
 app = falcon.API()
 service = QuoteResource()
