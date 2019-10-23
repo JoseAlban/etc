@@ -31,6 +31,10 @@ DB_CONNECTION = get_db_connection()
 
 class ReadingsResource:
 
+    def __init__(self, db_conn):
+        self._db_conn = db_conn
+
+
     def on_get(self, req, resp, box_id, from_date, to_date):
         """Returns a list of readings of a sensor box between two dates"""
 
@@ -51,7 +55,7 @@ class ReadingsResource:
             )
 
         results = None
-        with DB_CONNECTION.cursor() as cursor:
+        with self._db_conn.cursor() as cursor:
             sql = """SELECT * FROM readings
                     INNER JOIN sensors ON readings.sensor_id=sensors.id
                     WHERE reading_ts BETWEEN %s AND %s"""
@@ -80,6 +84,12 @@ class ReadingsResource:
         resp.media = readings
 
 
-app = falcon.API()
-service = ReadingsResource()
-app.add_route('/readings/{box_id}/{from_date}/{to_date}', service)
+def create_app(db_conn):
+    service = ReadingsResource(db_conn)
+    api = falcon.API()
+    api.add_route('/readings/{box_id}/{from_date}/{to_date}', service)
+    return api
+
+
+def get_app():
+    return create_app(DB_CONNECTION)
