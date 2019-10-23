@@ -1,6 +1,7 @@
 db:
-  url: interviews.ctsaq8pbcych.eu-west-2.rds.amazonaws.com:3306
+  url: interviews.ctsaq8pbcych.eu-west-2.rds.amazonaws.com
   name: interviews
   username: admin
+  # ideally, we would not commit this file with secrets, rather, use gitcrypt or such tools
   password: REDACTED
 

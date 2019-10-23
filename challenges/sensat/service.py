@@ -3,6 +3,7 @@ import yaml
 import logging
 import sys
 import re
+import pymysql
 
 LOGGER = logging.getLogger('sensat.' + __name__)
 LOGGER.setLevel(logging.DEBUG)
@@ -12,10 +13,28 @@ LOG_HANDLER.setFormatter(logging.Formatter(
 LOGGER.addHandler(LOG_HANDLER)
 
 
+def get_config():
+    with open("config.yaml", 'r') as stream:
+        return yaml.safe_load(stream)
+
+
+def get_db_connection():
+    return pymysql.connect(host=CONFIG['db']['url'],
+                           user=CONFIG['db']['username'],
+                           password=CONFIG['db']['password'],
+                           db=CONFIG['db']['name'],)
+
+
+CONFIG = get_config()
+DB_CONNECTION = get_db_connection()
+
+
 class ReadingsResource:
 
     def on_get(self, req, resp, box_id, from_date, to_date):
         """Returns a list of readings of a sensor box between two dates"""
+
+        LOGGER.info("Readings for box: %s", box_id)
 
         valid_date = re.compile(r'^\d\d\d\d-\d\d-\d\d$')
         if not valid_date.match(from_date):
@@ -31,21 +50,35 @@ class ReadingsResource:
                     to_date, valid_date.pattern)
             )
 
-        readings = {
-            'quote': (
-                "I've always been more interested in "
-                "the future than in the past."
-            ),
-            'author': 'Grace Hopper'
-        }
+        results = None
+        with DB_CONNECTION.cursor() as cursor:
+            sql = """SELECT * FROM readings
+                    INNER JOIN sensors ON readings.sensor_id=sensors.id
+                    WHERE reading_ts BETWEEN %s AND %s"""
+            LOGGER.info('SQL: %s', sql)
+            cursor.execute(sql, (from_date, to_date,))
+            results = cursor.fetchall()
 
-        LOGGER.info("Readings for box: %s", box_id)
-        resp.media = get_config()
+        readings = None
+        if results:
+            LOGGER.info('Results found: %s', len(results))
+            LOGGER.debug('Sample result: %s', results[0])
+            readings = [
+                {
+                    'box_id': r[1],
+                    'sensor_id': r[2],
+                    'name': r[11],
+                    'unit': r[6],
+                    'reading': r[4],
+                    'reading_ts': '{}'.format(r[3]),
+                }
+                for r in results
+            ]
+        else:
+            raise falcon.HTTPNotFound()
 
+        resp.media = readings
 
-def get_config():
-    with open("config.yaml", 'r') as stream:
-        return yaml.safe_load(stream)
 
 app = falcon.API()
 service = ReadingsResource()
