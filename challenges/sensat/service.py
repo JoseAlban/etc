@@ -19,6 +19,7 @@ def get_config():
 
 
 def get_db_connection():
+    # need to be careful not to leak connections
     return pymysql.connect(host=CONFIG['db']['url'],
                            user=CONFIG['db']['username'],
                            password=CONFIG['db']['password'],

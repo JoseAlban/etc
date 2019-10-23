@@ -7,6 +7,8 @@ verify_ssl = true
 pep8 = "*"
 autopep8 = "*"
 ipython = "*"
+pytest = "*"
+msgpack = "*"
 
 [packages]
 falcon = "*"

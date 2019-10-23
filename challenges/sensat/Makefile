@@ -1,3 +1,6 @@
+test:
+	pipenv run pytest
+
 serve:
 	pipenv run gunicorn "service:get_app()" --reload
 
