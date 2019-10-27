@@ -1,0 +1,5 @@
+-He accesses maps from multiple threads without any synchronisation, this can lead to panics and data visibility issues.
+
+-He tries to use an atomic integer to avoid generating duplicate game ids, but does not use the API correctly and so does not avoid the problem he is trying to solve.
+
+-The code structure is unintuitive, doing most of the program logic and state mutation in a method called ToClientResponse().
