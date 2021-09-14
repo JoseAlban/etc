@@ -39,3 +39,4 @@ Formula: cut out values above max of 95th percentile, then average it.
 
 - We expect users to have the best latency possible, no matter which region they are at
 - We will be measuring latency and region, and monthly review to decide whether to change this configuration
+- We can still scale in or out those quantities depending on our monthly measurements

@@ -32,3 +32,5 @@ Pros:
 Cons:
 - AWS does not provide the metrics that we need for our SLAs
     - We will need to build that out of the AWS API and plug into our dashboard
+- Worst case scenario is that AWS discontinues Cloudfront
+    - In this case, we would have to re-evaluate options at the time
