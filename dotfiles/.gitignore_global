@@ -1,0 +1,12 @@
+.git
+*.swp
+*.pyc
+.DS_Store
+.pytest_cache
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+.idea
+
+# for modd
+modd.conf
