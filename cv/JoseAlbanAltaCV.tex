@@ -95,32 +95,32 @@
 \addbibresource{sample.bib}
 
 \begin{document}
-\name{Your Name Here}
-\tagline{Your Position or Tagline Here}
+\name{Jose Alban}
+\tagline{Staff Software Engineer}
 %% You can add multiple photos on the left or right
-\photoR{2.8cm}{Globe_High}
+\photoR{2.8cm}{profilepic}
 % \photoL{2.5cm}{Yacht_High,Suitcase_High}
 
 \personalinfo{%
   % Not all of these are required!
-  \email{your_name@email.com}
-  \phone{000-00-0000}
-  \mailaddress{Åddrésş, Street, 00000 Cóuntry}
-  \location{Location, COUNTRY}
-  \homepage{www.homepage.com}
+  \email{zebaum@gmail.com}
+  \phone{+44 7415394666}
+  % \mailaddress{Åddrésş, Street, 00000 Cóuntry}
+  \location{West London, UK}
+  % \homepage{www.homepage.com}
   % \twitter{@twitterhandle}
-  \xtwitter{@x-handle}
-  \linkedin{your_id}
-  \github{your_id}
-  \orcid{0000-0000-0000-0000}
+  % \xtwitter{@x-handle}
+  \linkedin{153152227}
+  % \github{your_id}
+  % \orcid{0000-0000-0000-0000}
   %% You can add your own arbitrary detail with
   %% \printinfo{symbol}{detail}[optional hyperlink prefix]
   % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
 
   %% Or you can declare your own field with
   %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
-  \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
-  \gitlab{your_id}
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
   %%
   %% For services and platforms like Mastodon where there isn't a
   %% straightforward relation between the user ID/nickname and the hyperlink,
@@ -128,10 +128,10 @@
   % \printinfo{\faMastodon}{@username@instace}[https://instance.url/@username]
   %% But if you absolutely want to create new dedicated info fields for
   %% such platforms, then use \NewInfoField* with a star:
-  \NewInfoField*{mastodon}{\faMastodon}
+  % \NewInfoField*{mastodon}{\faMastodon}
   %% then you can use \mastodon, with TWO arguments where the 2nd argument is
   %% the full hyperlink.
-  \mastodon{@username@instance}{https://instance.url/@username}
+  % \mastodon{@username@instance}{https://instance.url/@username}
 }
 
 \makecvheader
@@ -144,75 +144,130 @@
 % Start a 2-column paracol. Both the left and right columns will automatically
 % break across pages if things get too long.
 \begin{paracol}{2}
-\cvsection{Experience}
+\cvsection{Commercial Experience (15y+)}
 
-\cvevent{Job Title 1}{Company 1}{Month 20XX -- Ongoing}{Location}
+\cvevent{Lead / Staff Software Engineer}{Sensat}{January 2020 - Current}{London}
 \begin{itemize}
-\item Job description 1
-\item Job description 2
+\item Top Github commit contributor in the company
+\item Individual Contributor career, working closely with the CTO on top client's security concerns and international compliance of data residency and ISO standards
+\item CORE team leadership - managing infrastructure architecture and provisioning, technical proposals, standards, sprints, implementation, testing, deployment, cross-team collaboration
+\item Serve as a point of reference for the full stack software development, from cloud infra to nodejs/golang backend and occasional angular frontend
 \end{itemize}
 
 \divider
 
-\cvevent{Job Title 2}{Company 2}{Month 20XX -- Ongoing}{Location}
+\cvevent{Senior Software Engineer}{Babylon Health}{May 2018 - January 2020}{London}
 \begin{itemize}
-\item Job description 1
-\item Job description 2
-\end{itemize}
-
-\cvsection{Projects}
-
-\cvevent{Project 1}{Funding agency/institution}{}{}
-\begin{itemize}
-\item Details
+% \item Standardisation of best development practices company-wide, e.g. observability (metrics via prometheus, tracing via jaeger), shared libraries for java, python, ruby
+\item One of top maintainers of an in-house Rust tool to validate and deploy resources on kubernetes
+% \item Pipeline optimisation and auditing services developed in Golang
+% \item Gitops development workflow as default
+\item HIPAA (US healthcare regulation) and GDPR compliant development lifecycle via SSDLC, e.g. led the TLS in-transit and encrypted at-rest enforcement across 10+ teams
+\item Interviewed many Engineers and some Product people for different levels ranging from Junior to Senior
+\item Mentored other Engineers across the company on best practices dealing with our infrastructure, also served as architecture consultant. Became a reference in the backend/infrastructure domain.
+% \item Done engineering documentation, including threat modelling and data protection; Software Vulnerabilities and Licence risk scanning
+% \item Supported build or buy decision-making process with opinions and facts
 \end{itemize}
 
 \divider
 
-\cvevent{Project 2}{Funding agency/institution}{Project duration}{}
-A short abstract would also work.
+\cvevent{Senior Software Engineer}{M2A Media}{April 2016 - May 2018}{London}
+\begin{itemize}
+\item Specification, Implementation (Python, Ruby, Bash), Test (unit, acceptance, load) and Operation of Live Streaming, Live to On-Demand, Packaging and Delivery of media services from scratch for well-established Media providers in the UK and abroad (Canada, Germany, Japan, US)
+\item Performance and cost-driven optimisation of concurrent highly-available low-latency critical backend Python services deployed on cloud-provisioned infrastructure (eg AWS) (Server / Serverless) or on-premise Linux instances
+% \item Suggested and Implemented cost-saving strategies on AWS, across different AWS services and production environments
+% \item Precise root cause identification and Automation of operational procedures to reduce operational cost and proactively prevent issues in production
+\item Mentored other Engineers at diverse levels on best practices and high standards of implementing backwards compatible and testable code, releasing, committing, etc
+% \item Built and operated Continuous Integration and Deployment services for shipping code quickly, reliably and consistenty across environments globally distributed
+\end{itemize}
+
+\divider
+
+\cvevent{Graduate / Senior Software Engineer}{British Broadcasting Corporation (BBC)}{September 2013 - April 2016}{London}
+\begin{itemize}
+\item Development of Object-Oriented (Java 7 and 8) Multi-threaded/Highly-available/Scalable/Business-critical/Public-facing microservices deployed on AWS
+% \item Eventual Out-Of-Hours support for business-critical services
+% \item Team's Jira board management
+\item Managed complex global AWS infrastructure, including multiple accounts/regions/services
+% \item Huge codebase introspection and research
+% \item Led proof-of-concept and development of innovative services, migration strategies
+% \item Investigation of root-cause on 3rd-party software, set up secure bastion for 3rd-party access
+ \item Continuous Delivery of business-critical services (Java 7) for iPlayer and other Media Factory consumers, affecting millions of users every week
+% \item Refactored legacy services - simplification and automation
+% \item Proactively pushed technologies forward, with rational arguments and discussion, e.g. from Java 7 to 8, from Spring XML config to Java config
+% \item Engineered new services from scratch, following specification
+% \item Communicated among team members from different countries (at least 8)
+% \item Shared knowledge via Workshop sessions
+\item Mentored contractors and engineers at different levels
+% \item First point-of-contact for many services and tools
+% \item Mastered BDD and TDD skills, Amazon Web Services, CI chain and Continuous Delivery, Spring and Camel frameworks for Java, Cucumber framework for Ruby, Ruby and Shell scripting
+% \item Engineered microservices (Java 7) that provided assets for iPlayer, a Video on-demand platform accessed from many countries (VPNs..)
+\item Developed frontend banner that affected every BBC webpage and millions of users worldwide
+\end{itemize}
+
+\divider
+
+\cvevent{Web Developer}{AlchemyBet}{October 2012 - August 2013}{Sheffield}
+\begin{itemize}
+% \item Responsible for engineering web systems
+% \item Integrated a team of developers and a project manager
+% \item Designed web pages, layout, style, documents
+\item Engineered web services (C\#), databases, scripts, automated updates
+%\item Used C\# - ASP.NET - JavaScript - jQuery - SQL - languages with MS Visual Studio IDE
+\end{itemize}
+
+\divider
+
+\cvevent{Systems developer}{Blanski eletronica do Brasil}{August 2010 - August 2011}{Salvador - Bahia - Brazil}
+\begin{itemize}
+\item Specification and implementation (Delphi/C++, Adobe Flash GUI) of a Supervisory System software from stratch for industrial laundry
+% \item Responsible for automating industrial laundry reports
+\item Took part in the development of a private automation protocol between a PLC and PC (Windows)
+% \item Produced technical documentation
+% \item Maintained locally developed PLCs
+\end{itemize}
 
 \medskip
 
-\cvsection{A Day of My Life}
+\cvsection{A Work Day In My Life}
 
 % Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
 % \wheelchart{outer radius}{inner radius}{
 % comma-separated list of value/text width/color/detail}
 \wheelchart{1.5cm}{0.5cm}{%
-  6/8em/accent!30/{Sleep,\\beautiful sleep},
-  3/8em/accent!40/Hopeful novelist by night,
-  8/8em/accent!60/Daytime job,
-  2/10em/accent/Sports and relaxation,
-  5/6em/accent!20/Spending time with family
+  6/8em/accent!30/{Exercise, Cook, Sleep},
+  3/8em/accent!40/Plan the work day ahead,
+  8/8em/accent!60/Code,
+  2/10em/accent/Fight the compiler,
+  5/6em/accent!20/Socials
 }
 
 % use ONLY \newpage if you want to force a page break for
 % ONLY the current column
 \newpage
 
-\cvsection{Publications}
+% \cvsection{Publications}
 
 %% Specify your last name(s) and first name(s) as given in the .bib to automatically bold your own name in the publications list.
 %% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
 %% You can specify multiple names, especially if you have changed your name or if you need to highlight multiple authors.
-\mynames{Lim/Lian\bibnamedelima Tze,
-  Wong/Lian\bibnamedelima Tze,
-  Lim/Tracy,
-  Lim/L.\bibnamedelimi T.}
+% \mynames{Lim/Lian\bibnamedelima Tze,
+%   Wong/Lian\bibnamedelima Tze,
+%   Lim/Tracy,
+%   Lim/L.\bibnamedelimi T.}
 %% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
 
-\nocite{*}
+% \nocite{*}
 
-\printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+% \printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
 
-\divider
+% \divider
 
-\printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles}},type=article]
+% \printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles}},type=article]
 
-\divider
+% \divider
 
-\printbibliography[heading=pubtype,title={\printinfo{\faUsers}{Conference Proceedings}},type=inproceedings]
+% \printbibliography[heading=pubtype,title={\printinfo{\faUsers}{Conference Proceedings}},type=inproceedings]
 
 %% Switch to the right column. This will now automatically move to the second
 %% page if the content is too long.
@@ -221,75 +276,121 @@ A short abstract would also work.
 \cvsection{My Life Philosophy}
 
 \begin{quote}
-``Something smart or heartfelt, preferably in one sentence.''
+``Hard today, harder tomorrow''
 \end{quote}
 
 \cvsection{Most Proud of}
 
-\cvachievement{\faTrophy}{Fantastic Achievement}{and some details about it}
+\cvachievement{\faTrophy}{Top 5\% on StackOverflow}{for 2019}
 
 \divider
 
-\cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}
+\cvachievement{\faTrophy}{Cloud infra reference}{being first point of contact for all infra and reliability issues}
 
 \divider
 
-\cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}
+\cvachievement{\faHeartbeat}{Developer experience and CI}{removing blockers for other software engineers so they can focus on product level concerns}
+
+\divider
+
+\cvachievement{\faHeartbeat}{API design}{so that APIs can be consumed safely by the public}
 
 \cvsection{Strengths}
 
 % Don't overuse these \cvtag boxes — they're just eye-candies and not essential. If something doesn't fit on a single line, it probably works better as part of an itemized list (probably inlined itemized list), or just as a comma-separated list of strengths.
 
-\cvtag{Hard-working}
-\cvtag{Eye for detail}\\
-\cvtag{Motivator \& Leader}
+\cvtag{Pragmatism}
+\cvtag{Patience}
+\cvtag{Minimalism}
 
 \divider\smallskip
 
-\cvtag{C++}
-\cvtag{Embedded Systems}\\
-\cvtag{Statistical Analysis}
+\cvtag{Macos}
+\cvtag{Golang}
+\cvtag{Rust}
+\cvtag{Nodejs}
+\cvtag{Python}
+\cvtag{Pulumi}
+\cvtag{Terraform}
+\cvtag{AI}
+
+% {\sl Operational Systems:} {\rpush {\bf MacOS} {\tiny Preferred}, Linux, Raspbian, Windows, iOS, Android} \\ \\
+%     % {\sl Favourite code editors:} {\rpush IntelliJ, Vscodium, Vim} \\ \\
+%     {\sl Programming Languages:} {\rpush {\bf Golang}, {\bf Rust}, {\bf Python}, Java, Typescript, Shell}
+%         AI {\tiny (LLMs)},
+%         Linux Admin, Network {\tiny (IP, NAT, Proxy, Router, Firewall)},
+%         Security {\tiny (PKI, SSH, TLS, Tunnels)},
+%         Version Management {\tiny (Git)},
+%         Dependency Management and Packaging,
+%         Resource Management {\tiny Pulumi, Terraform, Ansible},
+%         % TDD,
+%         % BDD,
+%         Cloud services {\tiny (AWS, GCP, DigitalOcean)},
+%         Virtualisation {\tiny (Docker, Kubernetes)},
+%         Service Mesh {\tiny (Istio)},
+%         Web servers,
+%         Reverse Proxy,
+%         Dependency Injection {\tiny (Spring)},
+%         Scaling {\tiny (AWS ASGs, Docker swarms)},
+%         Zero downtime architecture,
+%         Resilience,
+%         Microservices,
+%         Middleware {\tiny (SQS, SNS, Kinesis, Kafka)},
+%         Network Protocols {\tiny GRPC, TCP, UDP},
+%         DB Management {\tiny postgres, AWS RDS},
+%         Transaction Management,
+%         Continuous Integration and Delivery {\tiny (GHA, Jenkins, CircleCI, GoCD)},
+%         RESTful APIs
+%         % Scrum {\tiny (Agile: Sprints, Stand-ups)},
+%         % JVM Tuning,
+%         % Semantic Web and Big Data {\tiny (Ontologies, Triplestore)}, Dynamic Web Content {\tiny (AJAX)}
 
 \cvsection{Languages}
 
 \cvskill{English}{5}
 \divider
 
+\cvskill{Portuguese}{5}
+\divider
+
 \cvskill{Spanish}{4}
 \divider
 
-\cvskill{German}{3.5} %% Supports X.5 values.
+\cvskill{German}{1} %% Supports X.5 values.
+
+\cvsection{Legal}
+\cvachievement{}{Permanent UK Residence / Spanish citizenship / 1 month's notice}{}
+
 
 %% Yeah I didn't spend too much time making all the
 %% spacing consistent... sorry. Use \smallskip, \medskip,
 %% \bigskip, \vspace etc to make adjustments.
 \medskip
 
-\cvsection{Education}
+\cvsection{Education (6y)}
 
-\cvevent{Ph.D.\ in Your Discipline}{Your University}{Sept 2002 -- June 2006}{}
-Thesis title: Wonderful Research
-
-\divider
-
-\cvevent{M.Sc.\ in Your Discipline}{Your University}{Sept 2001 -- June 2002}{}
+\cvevent{MSc(Eng) Advanced Software Engineering}{University of Sheffield}{September 2012 - September 2013}{}
+Dissertation subject: Developing the University of Sheffield Cloud PaaS based on open source software
+First Class / Distinction (72\%)
 
 \divider
 
-\cvevent{B.Sc.\ in Your Discipline}{Stanford University}{Sept 1998 -- June 2001}{}
+\cvevent{BEng Electrical Engineering}{Universidade Salvador}{January 2006 - July 2011}{}
+Final essay subject: Aspects of developing a Supervisory System in C++/Delphi
+Emphasis: Electronics / First Class (71\%)
 
 % \divider
 
-\cvsection{Referees}
+% \cvsection{Referees}
 
 % \cvref{name}{email}{mailing address}
-\cvref{Prof.\ Alpha Beta}{Institute}{a.beta@university.edu}
-{Address Line 1\\Address Line 2}
+% \cvref{Prof.\ Alpha Beta}{Institute}{a.beta@university.edu}
+% {Address Line 1\\Address Line 2}
 
-\divider
+% \divider
 
-\cvref{Prof.\ Gamma Delta}{Institute}{g.delta@university.edu}
-{Address Line 1\\Address Line 2}
+% \cvref{Prof.\ Gamma Delta}{Institute}{g.delta@university.edu}
+% {Address Line 1\\Address Line 2}
 
 
 \end{paracol}
