@@ -1,0 +1,366 @@
+% LaTeX resume using res.cls
+\documentclass[line,margin]{res}
+%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
+\usepackage{newcent}   % uses new century schoolbook postscript font
+%\usepackage[sc,osf]{mathpazo}
+%\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+%support chinese/japanese/korean:
+\usepackage{CJKutf8}
+%dates and calculation support:
+\usepackage{datenumber,fp}
+%smaller font in local env for itemize
+\usepackage{enumitem}
+%compile with xelatex for fontspec
+\usepackage{fontspec}
+\setmainfont{Gill Sans}[Ligatures=TeX,Scale=1.05]
+\newcommand{\be}{\begin{itemize}[before=\sffamily\small] \itemsep -2pt  \setlength{\itemindent}{2em}}
+\newcommand{\ee}{\end{itemize}}
+\newcommand{\addm}{\footnotesize}
+\newcommand{\eaddm}{\normalsize}
+\newcommand{\rpush}{\footnotesize\hfill}
+
+%set birthday:
+\newcounter{datenow}%
+\setmydatenumber{datenow}{\the\year}{\the\month}{\the\day}%
+
+\newcounter{birthdate}%
+\setmydatenumber{birthdate}{1988}{01}{30}%
+\FPsub\ageresult{\thedatenow}{\thebirthdate}
+\FPdiv\myage{\ageresult}{365.2425}
+\FPtrunc\myage{\myage}{0}
+
+%set exp years
+\newcounter{firstcommercialdate}%
+\setmydatenumber{firstcommercialdate}{2010}{08}{01}%
+\FPsub\commexpresult{\thedatenow}{\thefirstcommercialdate}
+\FPdiv\mycommexp{\commexpresult}{365.2425}
+\FPtrunc\mycommexp{\mycommexp}{1}
+
+\begin{document}
+
+\name{Jose Alban}
+%%\address{? years \\ Cratcliffe Apartments C3 Room 1, 1 Oakholme Road, Sheffield S10 3AE - United Kingdom}
+\address{\myage{} years \\ West London - United Kingdom}
+%%\address{+447415394666\\ ge0@live.com}
+\address{+447415394666\\ zebaum@gmail.com}
+
+\begin{resume}
+
+\section{GOAL}
+
+%To code is what I love :)
+% High-level topics of interest includes: Blockchain / Ethereum, AI, Machine Learning, Low-latency Streaming. % {\fontspec{Heiti SC} ツ}.
+To be an Individual Contributor at Principal level taking ownership of infra / backend / CI / DevEx / security / compliance.
+Pragmatic, minimalist, diplomatic. Compounded 15+ years of experience now with AI as copilot.
+
+%. I want to work with software engineering for web and/or mobile devices.
+%and process automation.
+%circuit projects,
+%telecom projects,
+%electronics and machine maintenance.
+
+\section{COMMERCIAL \\ EXPERIENCE ({\mycommexp{}y})}
+        Sensat {\rpush London - United Kingdom} \\
+        {\sl Lead / Staff Software Engineer} {\rpush January 2020 - Current} \\
+        \be
+            \item Individual Contributor career, working closely with the CTO on top client's security concerns and international compliance of data residency and ISO standards
+            \item Top code commit contributor on company's Github organisation overall
+            \item CORE team leadership - managing infrastructure architecture and provisioning, technical proposals, standards, sprints, implementation, testing, deployment, cross-team collaboration
+            \item Serve as a point of reference for the full stack software development, from cloud infra to nodejs/golang backend and occasional angular frontend
+
+        \ee
+
+        Babylon Health {\rpush London - United Kingdom} \\
+        {\sl Senior Software Engineer} {\rpush May 2018 - January 2020} \\
+        \be
+            % \item Standardisation of best development practices company-wide, e.g. observability (metrics via prometheus, tracing via jaeger), shared libraries for java, python, ruby
+            \item One of top maintainers of an in-house Rust tool to validate and deploy resources on kubernetes
+            % \item Pipeline optimisation and auditing services developed in Golang
+            % \item Gitops development workflow as default
+            \item HIPAA (US healthcare regulation) and GDPR compliant development lifecycle via SSDLC, e.g. led the TLS in-transit and encrypted at-rest enforcement across 10+ teams
+            \item Interviewed many Engineers and some Product people for different levels ranging from Junior to Senior
+            \item Mentored other Engineers across the company on best practices dealing with our infrastructure, also served as architecture consultant. Became a reference in the backend/infrastructure domain.
+            % \item Done engineering documentation, including threat modelling and data protection; Software Vulnerabilities and Licence risk scanning
+            % \item Supported build or buy decision-making process with opinions and facts
+
+        \ee
+
+        M2A Media {\rpush London - United Kingdom} \\
+        {\sl Senior Software Engineer} {\rpush April 2016 - May 2018} \\
+        \be
+            \item Specification, Implementation (Python, Ruby, Bash), Test (unit, acceptance, load) and Operation of Live Streaming, Live to On-Demand, Packaging and Delivery of media services from scratch for well-established Media providers in the UK and abroad (Canada, Germany, Japan, US)
+            \item Performance and cost-driven optimisation of concurrent highly-available low-latency critical backend Python services deployed on cloud-provisioned infrastructure (eg AWS) (Server / Serverless) or on-premise Linux instances
+            % \item Suggested and Implemented cost-saving strategies on AWS, across different AWS services and production environments
+            % \item Precise root cause identification and Automation of operational procedures to reduce operational cost and proactively prevent issues in production
+            \item Mentored other Engineers at diverse levels on best practices and high standards of implementing backwards compatible and testable code, releasing, committing, etc
+            % \item Built and operated Continuous Integration and Deployment services for shipping code quickly, reliably and consistenty across environments globally distributed
+        \ee
+
+        British Broadcasting Corporation (BBC) {\rpush London - United Kingdom} \\
+        {\sl Senior Software Engineer} {\rpush January 2016 - April 2016} \\
+        \be
+            \item Development of Object-Oriented (Java 7 and 8) Multi-threaded/Highly-available/Scalable/Business-critical/Public-facing microservices deployed on AWS
+            % \item Eventual Out-Of-Hours support for business-critical services
+            % \item Team's Jira board management
+            \item Managed complex global AWS infrastructure, including multiple accounts/regions/services
+            % \item Huge codebase introspection and research
+            % \item Led proof-of-concept and development of innovative services, migration strategies
+            % \item Investigation of root-cause on 3rd-party software, set up secure bastion for 3rd-party access
+        \ee
+        {\sl Software Engineer} {\rpush July 2014 - January 2016} \\
+        \be
+            \item Continuous Delivery of business-critical services (Java 7) for iPlayer and other Media Factory consumers, affecting millions of users every week
+            % \item Refactored legacy services - simplification and automation
+            % \item Proactively pushed technologies forward, with rational arguments and discussion, e.g. from Java 7 to 8, from Spring XML config to Java config
+            % \item Engineered new services from scratch, following specification
+            % \item Communicated among team members from different countries (at least 8)
+            % \item Shared knowledge via Workshop sessions
+            \item Mentored contractors and engineers at different levels
+            \item First point-of-contact for many services and tools
+        \ee
+        {\sl Junior Software Engineer} {\rpush February 2014 - July 2014} \\
+        \be
+            % \item Mastered BDD and TDD skills, Amazon Web Services, CI chain and Continuous Delivery, Spring and Camel frameworks for Java, Cucumber framework for Ruby, Ruby and Shell scripting
+            \item Engineered microservices (Java 7) that provided assets for iPlayer, a Video on-demand platform accessed from many countries (VPNs..)
+        \ee
+        {\sl Graduate Developer} {\rpush September 2013 - February 2014} \\
+        \be
+            % \item Integrated a team of developers, project manager and product owner, following Scrum (Agile) methodology, with daily stand-up sessions and bi-weekly team retrospective
+            % \item Team responsible for supporting and improving the header and footer, along with other complex issues, that affected every BBC webpage and millions of users
+            \item Developed frontend banner that affected every BBC webpage and millions of users worldwide
+            % \item Engineered web services, APIs and tests, produced technical documentation, designed web content
+        \ee
+
+    % \be
+    %     \item Software Engineer, at Media Services:
+    %     \item Junior Software Engineer, moved to Media Services:
+    %     \item Graduate Developer, first job rotation on the OTG (Online Technology Group):
+    % \ee
+
+        AlchemyBet {\rpush Sheffield - South Yorkshire - United Kingdom} \\
+        {\sl Web Developer} {\rpush (Part-time) October 2012 - August 2013} \\
+         \be
+            % \item Responsible for engineering web systems
+            % \item Integrated a team of developers and a project manager
+            % \item Designed web pages, layout, style, documents
+            \item Engineered web services (C\#), databases, scripts, automated updates
+            %\item Used C\# - ASP.NET - JavaScript - jQuery - SQL - languages with MS Visual Studio IDE
+         \ee
+
+        Blanski eletronica do Brasil {\rpush Salvador - Bahia - Brazil} \\
+        {\sl Systems developer {\footnotesize (Internship)} } {\rpush August 2010 - August 2011} \\
+         \be
+            \item Specification and implementation (Delphi/C++, Adobe Flash GUI) of a Supervisory System software from stratch for industrial laundry
+            % \item Responsible for automating industrial laundry reports
+            \item Took part in the development of a private automation protocol between a PLC and PC (Windows)
+            % \item Produced technical documentation
+            % \item Maintained locally developed PLCs
+         \ee
+
+\section{EDUCATION (6y)}
+
+            University of Sheffield {\rpush Sheffield - South Yorkshire - United Kingdom} \\
+            {\sl MSc(Eng) Advanced Software Engineering}  {\rpush September 2012 - September 2013} \\
+                % \sl will be bold italic in New Century Schoolbook (or any postscript font) and just slanted in Computer Modern (default) font
+            \addm
+                First Class / Distinction (72\%) {\rpush Course length: 1 year}\\
+                Dissertation subject: Developing the University of Sheffield Cloud PaaS based on open source software
+            \eaddm
+
+            Universidade Salvador {\rpush Salvador - Bahia - Brazil }\\
+            {\sl BEng Electrical Engineering} {\rpush January 2006 - July 2011} \\
+            \addm
+                First Class (71\%) {\rpush Course length: 5 years}\\
+                Emphasis: Electronics \\
+                Final essay subject: Aspects of developing a Supervisory System in C++/Delphi
+            \eaddm
+
+\section{TECHNICAL \\ SKILLS \\/ AWARDS}
+    {\sl Operational Systems:} {\rpush {\bf MacOS} {\tiny Preferred}, Linux, Raspbian, Windows, iOS, Android} \\ \\
+    % {\sl Favourite code editors:} {\rpush IntelliJ, Vscodium, Vim} \\ \\
+    {\sl Programming Languages:} {\rpush {\bf Golang}, {\bf Rust}, {\bf Python}, Java, Typescript, Shell}
+    % (Scala, Kotlin, Solidity){\tiny Interested} }
+    % \addm
+    % \be
+        % \item Electronics {\rpush Assembly 8051, PIC, fond of RaspberryPi}
+        %LADDER
+        % \item Compiled {\rpush C, C++/Delphi, Java/C\#, Scala, Kotlin}
+        % \item Interpreted {\rpush Shell {\tiny Zsh}, Ruby, Javascript, Groovy, Python, SQL, SPARQL, LaTeX}
+        %Pascal
+        % \item Mobile {\rpush Objective C (iPhone), Android Java API}
+        % \item Web {\rpush HTML, CSS, JSON \& XML, PHP, ASP.NET / JSP / GSP, J2EE}
+        % \item Frameworks {\rpush Cocoa, Bootstrap, jQuery, Spring, Hibernate, Camel, Grails, Rails, Cucumber, Ethereum, (Django, Hadoop, Spark){\tiny Interested}}
+    % \ee
+    % \eaddm
+
+    {\sl General:}
+    \addm
+        AI {\tiny (LLMs)},
+        Linux Admin, Network {\tiny (IP, NAT, Proxy, Router, Firewall)},
+        Security {\tiny (PKI, SSH, TLS, Tunnels)},
+        Version Management {\tiny (Git)},
+        Dependency Management and Packaging,
+        Resource Management {\tiny Pulumi, Terraform, Ansible},
+        % TDD,
+        % BDD,
+        Cloud services {\tiny (AWS, GCP, DigitalOcean)},
+        Virtualisation {\tiny (Docker, Kubernetes)},
+        Service Mesh {\tiny (Istio)},
+        Web servers,
+        Reverse Proxy,
+        Dependency Injection {\tiny (Spring)},
+        Scaling {\tiny (AWS ASGs, Docker swarms)},
+        Zero downtime architecture,
+        Resilience,
+        Microservices,
+        Middleware {\tiny (SQS, SNS, Kinesis, Kafka)},
+        Network Protocols {\tiny GRPC, TCP, UDP},
+        DB Management {\tiny postgres, AWS RDS},
+        Transaction Management,
+        Continuous Integration and Delivery {\tiny (GHA, Jenkins, CircleCI, GoCD)},
+        RESTful APIs
+        % Scrum {\tiny (Agile: Sprints, Stand-ups)},
+        % JVM Tuning,
+        % Semantic Web and Big Data {\tiny (Ontologies, Triplestore)}, Dynamic Web Content {\tiny (AJAX)}
+    \eaddm
+
+                %{\sl Softwares:} MS Visual Studio, Embarcadero Delphi, Eclipse, Spring Suite Tools, NetBeans, Devc++, Xcode, Keil
+                %MultiSim 10, Proteus, MatLab, Office \\
+                %{\sl Technologies:} Routers, Switches, Wireless network, Smartphones, CSP (Communicating Sequential Process)
+                %{\sl Technologies:} Networks, Smartphones, CSP (Communicating Sequential Process)
+    {\sl Awards:}
+    \addm
+        Top 5\% on StackOverflow for 2019
+    \eaddm
+
+
+% \iffalse
+% \section{REFEREES}
+%             {\sl Joseph Taylor (UK)} {\rpush Professional - BBC}
+%             \\ {\footnotesize joseph.taylor@bbc.co.uk}
+
+%             % \item Samir Ullah (UK) \hfill Professional - AlchemyBet
+%             %\\ Mobile: +44 78512 22285
+%             %\\ samir.ullah@alchemybet.com
+
+%             % {\sl Guy Brown (UK)} {\rpush Academic - University of Sheffield}
+%             % \\ {\footnotesize g.brown@dcs.shef.ac.uk}
+
+%             % {\sl Janderson Blanski (Brazil)} {\rpush Professional - Blanski Eletronica do Brasil}
+%             %\\ Mobile: +55 71 9141 4367
+%             % \\ {\footnotesize janderson@blanski.com.br}
+% \fi
+
+%
+%\section{VOLUNTEER \\ WORK}
+%
+%Taught the course of digital inclusion for the elderly in 2011
+%\newline
+%Course total length: 80 hours
+%\newline
+%Helped including the elderly in the internet age. More than 40 senior citizens participated,
+% at Centro Social Urbano Vasco da Gama, Salvador - Bahia - Brazil.
+%
+
+%\section{EXTRA-CURRICULAR \\ ACTIVITIES}
+
+%               \begin{itemize} \itemsep -2pt
+
+%\item Software for embedded devices using J2ME programming language
+%\item Complex algorithms using data structures (Graph solving)
+%\item Firmware developed using Assembly and C programming language for 8051 and PIC microcontrollers
+%\item AC motor developed
+%\item Home automation system designed using Rockwell's PLC, RSLogix 5000 Software and Drivers, LADDER programming language and Elipse supervisory system
+%\item Iphone App developed together in a pair project with a real client, aiming to track migraine occurrences
+%\item 3rd place together with a team, in Sheffield's Startup Weekend, where I developed an iPhone App, together with business people
+%\item Co-Founder and CTO at 9in10win Startup company
+
+%\item IP network configuration under all details
+%\item Visited more than 10 cities throughout Brazil, and many cities around UK. Rich international experience while studying abroad.
+%\item More than 10 cities visited throughout Brazil
+%Salvador, Aracaju, Macei�, Petrolina, Belo Horizonte, Ipatinga, S�o Paulo, Campinas, Curitiba, Balne�rio Cambori�
+%\item International Experience and event organizer for international students
+                %\end{itemize}
+                %{\sl Courses:}
+                %\begin{itemize}    \itemsep -2pt
+%               \item Mini-curso de 12 horas sobre Roteadores Cisco e protocolos de roteamento din�mico, por exemplo OSPF e RIPv2
+
+%               \item {\sl Microsoft ProForm.Net professional formation program 2007}, in the subject network infrastructure, where it was developed a Windows Server 2003 server; Course length: 84 hours and 30 minutes. Concluded in 28/06/2007%, Classifica��o: 4$^{\circ}$ lugar.
+
+                %\item German language intensive course at Goethe Institut Curitiba, completing A1.1 level in February 2012. Total score: 10/10
+
+                %\end{itemize}
+                %\item IEEE Member, Institute of Electric and Electronic Engineers
+% \iffalse
+% \section{AWARDS}
+%             \be
+%                 \item Innovation Award: Media Services was awarded for their implementation of combined profiles. This comprehensive re-implementation of media encoding, packaging and distribution has simultaneously raised quality, simplified storage and distribution and pushed the boundaries of standards-based DASH streaming.
+%             \ee
+% \fi
+
+\section{LEGAL STATUS \\ / LANGUAGES}
+            \be
+            % \item Spanish citizenship, Permanent Residence via Settled EU Status, 1 month notice
+            \item Permanent UK Residence / Spanish citizenship / 1 month's notice
+            \item English (UK) {\rpush Fluent}, Portuguese (Brazil) {\rpush Native}, Spanish {\rpush Fluent}, German {\rpush Basic {\tiny (10/10 score A1.1 level at Goethe Institut)} }
+            \ee
+%\section{LEGAL \\ ISSUES}
+%               {\sl Nationality:} Brazilian \\
+%               {\sl Citizenship:} Brazilian and Spanish (European citizenship)\\
+
+%  \section{LANGUAGES}
+%             \be
+%                 \item English (UK) {\rpush Fluent {\tiny (Self taught)}}
+%                 \item Portuguese (Brazil) {\rpush Native}
+%                 \item Spanish {\rpush Intermediate}
+%                 % \item Japanese: Basic. (Self taught) {\tiny \begin{CJK}{UTF8}{min}私はジョセです！\end{CJK}}
+%                 % \item Japanese {\rpush Basic {\tiny (Self taught) {\fontspec{Heiti SC} 私はジョセです！}}}
+%                 \item German {\rpush Basic {\tiny (10/10 score A1.1 level at Goethe Institut)} }
+%             \ee
+
+% \section{CHARACTERISTICS}
+%             \be
+%                 \item Patience {\rpush\tiny "Like a Zen Spider".}
+%                 \item Quick Learner {\rpush\tiny Early adopter of new technologies.}
+%                 % \item Communication {\rpush\tiny Humans and Machines.}
+%                 \item Scientist {\rpush\tiny Opinion-less Data-driven Decisions.}
+%                  % {\tiny (Humans and Machines)}
+%                 % \item Perseverance
+%                 \item Creativity {\rpush\tiny Inspired mainly by music.}
+%                 % \item Good mood
+%                 % \item Strategic
+%                 \item Confidence {\rpush\tiny Proper unit/integration tests.}
+%                 % \item Leadership {\rpush\tiny A leader doesn't give orders, but directions.}
+%                 \item Diplomacy {\rpush\tiny Fairness to save resources.}
+%                 \item Simplicity first {\rpush\tiny Minimum Viable Product}
+%                 \item Straight to the point {\rpush\tiny No going in circles.}
+%             \ee
+
+%\section{HOBBIES}  Gym, Sports, Home automation, Stock market investor.
+%\section{HOBBIES}  Start-ups and investments.
+
+\bigskip
+
+\enlargethispage{4\baselineskip}
+% Footer
+\begin{center}
+  \begin{footnotesize}
+    {\sl LinkedIn:} http://www.linkedin.com/profile/view?id=153152227 \\
+    {\sl Developed in TeX} \\
+    {\sl Last update:} \today \\
+    % {\sl Developed in TeX, compiled with XeLaTeX} \\
+    % {\sl Please reconsider printing this document, why not share digitally and save trees} \\
+%    \href{\footerlink}{\texttt{\footerlink}}
+  \end{footnotesize}
+\end{center}
+
+\end{resume}
+\end{document}
+
+
+
+
+
+
+
