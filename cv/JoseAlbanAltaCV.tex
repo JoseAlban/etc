@@ -138,20 +138,31 @@
 %% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
 % \AtBeginEnvironment{itemize}{\small}
 
-%% Set the left/right column width ratio to 6:4.
-\columnratio{0.6}
+%% Set the left/right column width ratio to 9:1.
+% \columnratio{0.9}
 
 % Start a 2-column paracol. Both the left and right columns will automatically
 % break across pages if things get too long.
-\begin{paracol}{2}
-\cvsection{Commercial Experience (15y+)}
+% \begin{paracol}{2}
+
+\cvsection{Staff Software Engineer}
+\begin{itemize}
+\item 15+ years of experience designing, building, and operating distributed systems and cloud infrastructure for high-availability, low-latency, security-conscious applications.
+\item Expert in cloud architecture, Go/Typescript/Rust/Python languages, developer experience, CI/CD pipelines, packaging and deploying software.
+\item Track record of building mission-critical systems at scale (BBC, M2A, Babylon, Sensat), leading cross-team efforts, improving developer productivity, reliability, cloud cost efficiency, and compliance.
+\item Now focused on engineering foundations for AI product teams: data pipelines, inference infra, secure multi-region deployment, and high-throughput backend systems.
+\end{itemize}
+
+\cvsection{Commercial Experience}
 
 \cvevent{Lead / Staff Software Engineer}{Sensat}{January 2020 - Current}{London}
 \begin{itemize}
-\item Top Github commit contributor in the company
+% \item Top Github commit contributor in the company
+\item Led core platform architecture powering 3D digital twin operations across UK/US/AU/ME clients, handling 200TB+ data, 99.9999\% uptime, and 1000+ concurrent users
+\item Designed and migrated multi-region infra enabling secure data residency and 60\%+ lower deployment overhead
 \item Individual Contributor career, working closely with the CTO on top client's security concerns and international compliance of data residency and ISO standards
-\item CORE team leadership - managing infrastructure architecture and provisioning, technical proposals, standards, sprints, implementation, testing, deployment, cross-team collaboration
-\item Serve as a point of reference for the full stack software development, from cloud infra to nodejs/golang backend and occasional angular frontend
+\item CORE team leadership - managing infrastructure architecture and provisioning, technical proposals, standards, sprints, implementation, testing, deployment, cross-team collaboration, mentored 3+ engineers and managers
+\item Serve as a point of reference to 10+ engineers for the full stack software development, from cloud infra to nodejs/golang backend and occasional angular frontend
 \end{itemize}
 
 \divider
@@ -159,7 +170,8 @@
 \cvevent{Senior Software Engineer}{Babylon Health}{May 2018 - January 2020}{London}
 \begin{itemize}
 % \item Standardisation of best development practices company-wide, e.g. observability (metrics via prometheus, tracing via jaeger), shared libraries for java, python, ruby
-\item One of top maintainers of an in-house Rust tool to validate and deploy resources on kubernetes
+% \item One of top maintainers of an in-house Rust tool to validate and deploy resources on kubernetes
+\item Designed and owned a Rust-based Kubernetes deployment tool used by 50+ engineers; reduced deployment errors by 70\%+ and cut incident load across 12+ microservice teams.
 % \item Pipeline optimisation and auditing services developed in Golang
 % \item Gitops development workflow as default
 \item HIPAA (US healthcare regulation) and GDPR compliant development lifecycle via SSDLC, e.g. led the TLS in-transit and encrypted at-rest enforcement across 10+ teams
@@ -185,7 +197,8 @@
 
 \cvevent{Graduate / Senior Software Engineer}{British Broadcasting Corporation (BBC)}{September 2013 - April 2016}{London}
 \begin{itemize}
-\item Development of Object-Oriented (Java 7 and 8) Multi-threaded/Highly-available/Scalable/Business-critical/Public-facing microservices deployed on AWS
+% \item Development of Object-Oriented (Java 7 and 8) Multi-threaded/Highly-available/Scalable/Business-critical/Public-facing microservices deployed on AWS
+\item Built and maintained high-volume Java services underpinning BBC iPlayer, processing millions of requests/day and serving global audiences across AWS regions
 % \item Eventual Out-Of-Hours support for business-critical services
 % \item Team's Jira board management
 \item Managed complex global AWS infrastructure, including multiple accounts/regions/services
@@ -229,22 +242,36 @@
 
 \medskip
 
-\cvsection{A Work Day In My Life}
+\cvsection{Education (6y)}
 
-% Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
-% \wheelchart{outer radius}{inner radius}{
-% comma-separated list of value/text width/color/detail}
-\wheelchart{1.5cm}{0.5cm}{%
-  6/8em/accent!30/{Exercise, Cook, Sleep},
-  3/8em/accent!40/Plan the work day ahead,
-  8/8em/accent!60/Code,
-  2/10em/accent/Fight the compiler,
-  5/6em/accent!20/Socials
-}
+\cvevent{MSc(Eng) Advanced Software Engineering}{University of Sheffield}{September 2012 - September 2013}{}
+Dissertation subject: Developing the University of Sheffield Cloud PaaS based on open source software
+First Class / Distinction (72\%)
+
+\divider
+
+\cvevent{BEng Electrical Engineering}{Universidade Salvador}{January 2006 - July 2011}{}
+Final essay subject: Aspects of developing a Supervisory System in C++/Delphi
+Emphasis: Electronics / First Class (71\%)
+
+\medskip
+
+% \cvsection{A Work Day In My Life}
+
+% % Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% % \wheelchart{outer radius}{inner radius}{
+% % comma-separated list of value/text width/color/detail}
+% \wheelchart{1.5cm}{0.5cm}{%
+%   6/8em/accent!30/{Exercise, Cook, Sleep},
+%   3/8em/accent!40/Plan the work day ahead,
+%   8/8em/accent!60/Code,
+%   2/10em/accent/Fight the compiler,
+%   5/6em/accent!20/Socials
+% }
 
 % use ONLY \newpage if you want to force a page break for
 % ONLY the current column
-\newpage
+% \newpage
 
 % \cvsection{Publications}
 
@@ -271,29 +298,29 @@
 
 %% Switch to the right column. This will now automatically move to the second
 %% page if the content is too long.
-\switchcolumn
+% \switchcolumn
 
-\cvsection{My Life Philosophy}
+% \cvsection{My Life Philosophy}
 
-\begin{quote}
-``Hard today, harder tomorrow''
-\end{quote}
+% \begin{quote}
+% ``Hard today, harder tomorrow''
+% \end{quote}
 
-\cvsection{Most Proud of}
+% \cvsection{Most Proud of}
 
-\cvachievement{\faTrophy}{Top 5\% on StackOverflow}{for 2019}
+% \cvachievement{\faTrophy}{Top 5\% on StackOverflow}{for 2019}
 
-\divider
+% \divider
 
-\cvachievement{\faTrophy}{Cloud infra reference}{being first point of contact for all infra and reliability issues}
+% \cvachievement{\faTrophy}{Cloud infra reference}{being first point of contact for all infra and reliability issues}
 
-\divider
+% \divider
 
-\cvachievement{\faHeartbeat}{Developer experience and CI}{removing blockers for other software engineers so they can focus on product level concerns}
+% \cvachievement{\faHeartbeat}{Developer experience and CI}{removing blockers for other software engineers so they can focus on product level concerns}
 
-\divider
+% \divider
 
-\cvachievement{\faHeartbeat}{API design}{so that APIs can be consumed safely by the public}
+% \cvachievement{\faHeartbeat}{API design}{so that APIs can be consumed safely by the public}
 
 \cvsection{Strengths}
 
@@ -302,17 +329,20 @@
 \cvtag{Pragmatism}
 \cvtag{Patience}
 \cvtag{Minimalism}
+\cvtag{Leadership}
+\cvtag{Diplomacy}
+\cvtag{Innovative}
 
-\divider\smallskip
+% \divider\smallskip
 
-\cvtag{Macos}
-\cvtag{Golang}
-\cvtag{Rust}
-\cvtag{Nodejs}
-\cvtag{Python}
-\cvtag{Pulumi}
-\cvtag{Terraform}
-\cvtag{AI}
+% \cvtag{Macos}
+% \cvtag{Golang}
+% \cvtag{Rust}
+% \cvtag{Nodejs}
+% \cvtag{Python}
+% \cvtag{Pulumi}
+% \cvtag{Terraform}
+% \cvtag{AI}
 
 % {\sl Operational Systems:} {\rpush {\bf MacOS} {\tiny Preferred}, Linux, Raspbian, Windows, iOS, Android} \\ \\
 %     % {\sl Favourite code editors:} {\rpush IntelliJ, Vscodium, Vim} \\ \\
@@ -356,7 +386,7 @@
 \cvskill{Spanish}{4}
 \divider
 
-\cvskill{German}{1} %% Supports X.5 values.
+% \cvskill{German}{1} %% Supports X.5 values.
 
 \cvsection{Legal}
 \cvachievement{}{Permanent UK Residence / Spanish citizenship / 1 month's notice}{}
@@ -366,18 +396,6 @@
 %% spacing consistent... sorry. Use \smallskip, \medskip,
 %% \bigskip, \vspace etc to make adjustments.
 \medskip
-
-\cvsection{Education (6y)}
-
-\cvevent{MSc(Eng) Advanced Software Engineering}{University of Sheffield}{September 2012 - September 2013}{}
-Dissertation subject: Developing the University of Sheffield Cloud PaaS based on open source software
-First Class / Distinction (72\%)
-
-\divider
-
-\cvevent{BEng Electrical Engineering}{Universidade Salvador}{January 2006 - July 2011}{}
-Final essay subject: Aspects of developing a Supervisory System in C++/Delphi
-Emphasis: Electronics / First Class (71\%)
 
 % \divider
 
@@ -393,7 +411,7 @@ Emphasis: Electronics / First Class (71\%)
 % {Address Line 1\\Address Line 2}
 
 
-\end{paracol}
+% \end{paracol}
 
 
 \end{document}
